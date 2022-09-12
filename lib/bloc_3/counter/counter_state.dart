@@ -17,7 +17,7 @@ class CalculatingCounterState extends CounterState {
 class ValueCounterState extends CounterState {
   final int counter;
 
-  ValueCounterState(this.counter);
+  const ValueCounterState(this.counter);
 
   @override
   List<Object?> get props => [counter];

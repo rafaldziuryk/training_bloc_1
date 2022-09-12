@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 part 'counter_event.dart';
@@ -13,7 +13,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     on<CounterAdd>((event, emit) async {
       final calculatingState = CalculatingCounterState();
       emit(calculatingState);
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       counter++;
       final state = ValueCounterState(counter);
       emit(state);
@@ -22,7 +22,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     on<CounterSubtract>((event, emit) async {
       final calculatingState = CalculatingCounterState();
       emit(calculatingState);
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       counter--;
       final state = ValueCounterState(counter);
       emit(state);

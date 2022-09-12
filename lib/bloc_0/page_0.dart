@@ -17,7 +17,7 @@ class _Bloc0State extends State<Bloc0> {
       child: Builder(
         builder: (context) => Scaffold(
           appBar: AppBar(
-            title: Text('BLoC'),
+            title: const Text('BLoC'),
           ),
           body: Center(
             child: Column(

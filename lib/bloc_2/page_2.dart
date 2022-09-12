@@ -17,7 +17,7 @@ class _Bloc2State extends State<Bloc2> {
       child: Builder(
         builder: (context) => Scaffold(
           appBar: AppBar(
-            title: Text('BLoC'),
+            title: const Text('BLoC'),
           ),
           body: Center(
             child: Column(
@@ -25,9 +25,9 @@ class _Bloc2State extends State<Bloc2> {
               children: <Widget>[
                 BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
                   if (state is InitialCounterState) {
-                    return Text('There is no value');
+                    return const Text('There is no value');
                   } else if (state is CalculatingCounterState) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   } else if (state is ValueCounterState) {
                     return Column(
                       children: [
@@ -41,7 +41,7 @@ class _Bloc2State extends State<Bloc2> {
                       ],
                     );
                   } else {
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   }
                 }),
               ],
@@ -57,7 +57,7 @@ class _Bloc2State extends State<Bloc2> {
                     onPressed: buttonEnabled ? () => context.read<CounterBloc>().add(CounterAdd()) : null,
                     child: const Icon(Icons.add),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   ElevatedButton(

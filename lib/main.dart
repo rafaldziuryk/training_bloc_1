@@ -2,7 +2,11 @@ import 'package:bloc_1/bloc_0/page_0.dart';
 import 'package:bloc_1/bloc_1/page_1.dart';
 import 'package:bloc_1/bloc_2/page_2.dart';
 import 'package:bloc_1/bloc_3/page_3.dart';
+import 'package:bloc_1/bloc_5_con/page_5_con.dart';
+import 'package:bloc_1/bloc_5_seq/page_5_seq.dart';
 import 'package:flutter/material.dart';
+
+import 'bloc_4/page_4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,6 +61,24 @@ class MyHomePage extends StatelessWidget {
                 builder: (context) => const Bloc3(),
               )),
               child: const Text('Step 3'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const Bloc4(),
+              )),
+              child: const Text('Step 4'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const Bloc5Con(),
+              )),
+              child: const Text('Step 5 Con'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const Bloc5Seq(),
+              )),
+              child: const Text('Step 5 Seq'),
             ),
           ],
         ),

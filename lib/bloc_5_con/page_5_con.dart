@@ -1,15 +1,15 @@
-import 'package:bloc_1/bloc_3/counter/counter_bloc.dart';
+import 'package:bloc_1/bloc_5_con/counter/counter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Bloc3 extends StatefulWidget {
-  const Bloc3({Key? key}) : super(key: key);
+class Bloc5Con extends StatefulWidget {
+  const Bloc5Con({Key? key}) : super(key: key);
 
   @override
-  State<Bloc3> createState() => _Bloc3State();
+  State<Bloc5Con> createState() => _Bloc5ConState();
 }
 
-class _Bloc3State extends State<Bloc3> {
+class _Bloc5ConState extends State<Bloc5Con> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,13 +23,7 @@ class _Bloc3State extends State<Bloc3> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                BlocConsumer<CounterBloc, CounterState>(
-                  listenWhen: (previous, current) => current is ValueCounterState,
-                  listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Value has been changed'),
-                    ),
-                  ),
+                BlocBuilder<CounterBloc, CounterState>(
                   builder: (context, state) {
                     if (state is InitialCounterState) {
                       return const Text('There is no value');
@@ -55,26 +49,21 @@ class _Bloc3State extends State<Bloc3> {
               ],
             ),
           ),
-          floatingActionButton: BlocBuilder<CounterBloc, CounterState>(
-            builder: (context, state) {
-              final buttonEnabled = state is! CalculatingCounterState;
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ElevatedButton(
-                    onPressed: buttonEnabled ? () => context.read<CounterBloc>().add(CounterAdd()) : null,
-                    child: const Icon(Icons.add),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  ElevatedButton(
-                    onPressed: buttonEnabled ? () => context.read<CounterBloc>().add(CounterSubtract()) : null,
-                    child: const Icon(Icons.remove),
-                  ),
-                ],
-              );
-            },
+          floatingActionButton: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: () => context.read<CounterBloc>().add(CounterAdd()),
+                child: const Icon(Icons.add),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              ElevatedButton(
+                onPressed: () => context.read<CounterBloc>().add(CounterSubtract()),
+                child: const Icon(Icons.remove),
+              ),
+            ],
           ), // This trailing comma makes auto-formatting nicer for build methods.
         ),
       ),
